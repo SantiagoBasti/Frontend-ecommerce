@@ -1,14 +1,13 @@
 import "./Login.css"
 
 export default function Login(){
-
     return (
         <div className="login-container">
             <div className="wave"></div>
             <div className="wave"></div>
             <div className="wave"></div>
             <form className="login-form">
-                <h1>Ingresar</h1>
+                <h1>Login</h1>
                 <label>Correo electrónico</label>
                 <input
                     name="email"
