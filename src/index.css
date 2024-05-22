@@ -1,15 +1,16 @@
 :root {
---primary-color: rgba(255, 255, 255, 0.87);
---secundary-color: royalblue;
---terciary-color:#242424;
+  --primary-color: #ffffffde;
+  --secondary-color: royalblue;
+  --terciary-color: #242424;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  background-color: rgba(255, 255, 255, 0.87);
-  color: #242424;
+
+  background-color: var(--primary-color);
+  color: var(--terciary-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,7 +18,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -29,9 +30,10 @@
   min-height: 100dvh;
 }
 
-.main-container{
+.main-container {
   flex: 1;
   max-width: 1240px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 }
