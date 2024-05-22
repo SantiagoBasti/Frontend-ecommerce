@@ -1,0 +1,6 @@
+.product-card-container {
+    display: flex;
+    gap: 33px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
