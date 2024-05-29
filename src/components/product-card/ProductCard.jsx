@@ -1,36 +1,64 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { removeDecimals } from "../../services/utils/FormatNumber";
+
 import "./ProductCard.css";
+import { faHeart, faStar } from "@fortawesome/free-regular-svg-icons";
+
+import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
+
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { useOrder } from "../../context/OrderContext";
+
 
 export default function ProductCard({ product }) {
-    return (
-        <article className="card-container">
-            <figure>
-                <img src="" alt="" />
-                <div className="actions">
-                    <i className="fa-regular fa-heart"></i>
-                    <i className="fa-regular fa-eye"></i>
-                </div>
-            </figure>
-            <div className="info-product">
-                <h2>AirPods Pro2</h2>
-                <p className="price">1,099,000 <small>COP</small></p>
-                <div className="card-selection">
-                    <div className="version">
-                        <label className="selection-label" htmlFor="version">Versión</label>
-                        <select name="version" id="version">
-                            <option value="white">AirPods Pro 2</option>
-                        </select>
-                    </div>
-                </div>
-                <div className="star">
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    (5)
-                </div>
-                <button>Añadir al carrito</button>
-            </div>
-        </article>
-    );
+
+  const { addOrderItem } = useOrder();
+
+
+  return (
+    <article className="product-card">
+      <div className="card-header">
+        <div className="product-image">
+          <img src={product.image} alt={product.name} />
+
+          <button className="btn-quickview">vista rápida</button>
+        </div>
+      </div>
+      <div className="card-body">
+        <div className="product-info">
+          <div className="product-category">{product.category}</div>
+
+          <div className="product-review">
+            <FontAwesomeIcon icon={faStarSolid} />
+            <FontAwesomeIcon icon={faStarSolid} />
+            <FontAwesomeIcon icon={faStarSolid} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+          </div>
+        </div>
+
+        <div className="product-name">
+          <a href="#"> {product.name}</a>
+        </div>
+        <div className="product-price">
+          <div className="product-discount-price">
+            $ {removeDecimals(product.price * 0.9)}
+          </div>
+          <div className="product-normal-price">
+            $ {removeDecimals(product.price)}
+          </div>
+        </div>
+      </div>
+      <div className="card-footer">
+        <button onClick={() => addOrderItem(product)}>Añadir</button>
+
+        <button className="btn-icon">
+          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+        </button>
+        <button className="btn-icon">
+          <FontAwesomeIcon icon={faHeart} />
+        </button>
+      </div>
+    </article>
+  );
 }

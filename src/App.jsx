@@ -12,13 +12,14 @@ import NotFound from './pages/not-found/NotFound';
 import ProductDetail from './pages/product-detail/ProductDetail';
 import { Route, Routes } from 'react-router-dom';
 import AdminGuard from './services/guard/AdminGuard';
+import OrderSidebar from './layout/order-sidebar/OrderSidebar';
 
 
 function App() {
   return (
     <>
       <Header />
-
+      <OrderSidebar/>
       <main className="main-container">
         <Routes>
           <Route path="/" element={<Home />} />

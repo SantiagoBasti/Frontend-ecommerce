@@ -1,12 +1,15 @@
-
 import ProductList from "../../components/produc-list/ProductList";
+import { useOrder } from "../../context/OrderContext";
 
-export default function Home(){
+export default function Home() {
+  const { order } = useOrder();
 
-    return(
-        <>
-        <h1>Home</h1>
-        <ProductList/>
-        </>
-    );
+  console.log(order);
+  return (
+    <>
+      <h1>Principal</h1>
+
+      <ProductList />
+    </>
+  );
 }

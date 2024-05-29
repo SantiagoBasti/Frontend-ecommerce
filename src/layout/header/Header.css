@@ -1,5 +1,7 @@
 header{
     background-color: royalblue;
+    display: flex;
+    z-index: 2;
 
     .header-nav{
         display: flex;
@@ -18,5 +20,14 @@ header{
             background-color: rgb(47, 83, 191);
             }
         }
+    }
+
+    .user-info{
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        color: white;
+        padding-inline: 1rem;
     }
 }
