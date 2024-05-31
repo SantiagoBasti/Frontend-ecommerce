@@ -8,6 +8,7 @@ import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
 
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { useOrder } from "../../context/OrderContext";
+import { Link } from "react-router-dom";
 
 
 export default function ProductCard({ product }) {
@@ -50,11 +51,13 @@ export default function ProductCard({ product }) {
         </div>
       </div>
       <div className="card-footer">
-        <button onClick={() => addOrderItem(product)}>Añadir</button>
+        <button className="btn-icon" onClick={() => addOrderItem(product)}>Añadir</button>
 
-        <button className="btn-icon">
-          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-        </button>
+    {/* Boton ver mas */}
+        <Link className="btn-icon" to={`/product-detail/${product.id}`}>
+          <FontAwesomeIcon icon={faArrowUpRightFromSquare} title="Ver Detalle"/>
+        </Link>
+
         <button className="btn-icon">
           <FontAwesomeIcon icon={faHeart} />
         </button>
