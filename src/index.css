@@ -142,3 +142,20 @@ button[type="submit"] {
     }
   }
 }
+.btn {
+  padding: .5rem;
+  background-color: royalblue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  outline: none;
+
+  &.btn-success{
+    background-color: green;
+  }
+
+  &.btn-danger{
+    background-color: rgb(175, 43, 65);
+  }
+}
