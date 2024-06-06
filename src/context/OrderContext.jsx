@@ -14,12 +14,14 @@ export const OrderProvider = ({ children }) => {
     { id: 333, name: "Nintendo Switch se transforma para adaptarse a tu situación y te permite jugar a los títulos que quieras aunque no tengas mucho tiempo.", price: 5000, quantity: 2 },
   ]);
 
+  const[count, setCount] = useState(0);
+
   const [sidebarToggle, setsidebarToggle] = useState(false)
 
   useEffect(() =>{
 
     calculateTotal();
-
+    calculateCount();
   }, [order])
 
   const [total, setTotal] = useState(0);
@@ -51,6 +53,16 @@ export const OrderProvider = ({ children }) => {
 
     setTotal(totalCount);
   }
+
+  function calculateCount(){
+    let count = 0;
+
+    order.forEach((prod) =>{
+       count += prod.quantity
+      })
+
+      setCount(count);
+  }
   // remover elemento de la carta
 
 
@@ -63,7 +75,7 @@ export const OrderProvider = ({ children }) => {
     const updateOrder = order.map(item => {
 
       if(item.id === id){
-        item.quantity = quantity;
+        item.quantity = +quantity;
       }
       return item
     })
@@ -100,7 +112,7 @@ export const OrderProvider = ({ children }) => {
 
 
   return (
-    <OrderContext.Provider value={{ order, total, sidebarToggle, addOrderItem, handleChangeQuantity, removeItem, toggleSidebarOrder }}>
+    <OrderContext.Provider value={{ order, total, sidebarToggle, count, addOrderItem, handleChangeQuantity, removeItem, toggleSidebarOrder }}>
       {children}
     </OrderContext.Provider>
   );
