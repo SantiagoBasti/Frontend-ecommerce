@@ -18,12 +18,7 @@ export default function Header() {
   };
 
   const isAdmin = true;
-<<<<<<< HEAD
-
-  const {toggleSidebarOrder, count} = useOrder()
-=======
   const { toggleSidebarOrder } = useOrder();
->>>>>>> feature/order-localstorage
 
   return (
     <>
@@ -61,14 +56,6 @@ export default function Header() {
         </div>
       </header>
 
-<<<<<<< HEAD
-    <div className="user-info">
-      <div className={`user-cart-container ${ count < 1 ? " " : "show-circle"}`} data-count={count}>
-      <FontAwesomeIcon className="user-cart" icon={faCartShopping} onClick={() => toggleSidebarOrder()} />
-      </div>
-    </div>
-    </header>
-=======
       <Modal title="Ingresar" isOpen={isOpen} handleClose={handleClose}>
         <>
           <h3>Elemento Children</h3>
@@ -80,6 +67,5 @@ export default function Header() {
         </>
       </Modal>
     </>
->>>>>>> feature/order-localstorage
   );
 }
