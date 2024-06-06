@@ -7,7 +7,6 @@ const URL = "https://663ebeffe3a7c3218a4b47e7.mockapi.io"
 export default function ProductDetail(){
     const [product, setProduct] = useState()
     const [loading, setLoading] = useState(true)
-
     const{id} = useParams();
 
     async function getProductById(id){

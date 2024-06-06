@@ -8,11 +8,9 @@ export const useOrder = () => useContext(OrderContext);
 
 export const OrderProvider = ({ children }) => {
   // estado de la orden
-  const [order, setOrder] = useState([
-    { id: 100, name: "XBOX", price: 1000, quantity: 1 },
-    { id: 222, name: "PS5", price: 2000, quantity: 3 },
-    { id: 333, name: "Nintendo Switch se transforma para adaptarse a tu situación y te permite jugar a los títulos que quieras aunque no tengas mucho tiempo.", price: 5000, quantity: 2 },
-  ]);
+  const [order, setOrder] = useState(
+    JSON.parse(localStorage.getItem("order"))  || []
+  );
 
   const[count, setCount] = useState(0);
 
@@ -20,8 +18,12 @@ export const OrderProvider = ({ children }) => {
 
   useEffect(() =>{
 
+    localStorage.setItem("order", JSON.stringify(order))
     calculateTotal();
+<<<<<<< HEAD
     calculateCount();
+=======
+>>>>>>> feature/order-localstorage
   }, [order])
 
   const [total, setTotal] = useState(0);
@@ -39,7 +41,10 @@ export const OrderProvider = ({ children }) => {
     } else {
       // Si no existe, añadir el producto al array con cantidad 1
       producto.quantity = 1;
+
       setOrder([...order, producto]);
+      // localStorage.setItem("order", JSON.stringify([...order, producto]))
+      
     }
   }
 
@@ -78,7 +83,8 @@ export const OrderProvider = ({ children }) => {
         item.quantity = +quantity;
       }
       return item
-    })
+    });
+    // localStorage.setItem("order", JSON.stringify(updateOrder))
     setOrder(updateOrder)
 
   }
@@ -98,6 +104,7 @@ export const OrderProvider = ({ children }) => {
     }).then(result => {
       if(result.isConfirmed){
         const updOrder = order.filter(prod => prod.id !== id);
+        // localStorage.setItem("order", JSON.stringify(updOrder))
         setOrder(updOrder)
       }
     })
