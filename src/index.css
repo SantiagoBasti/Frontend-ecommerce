@@ -62,6 +62,10 @@
         color: royalblue;
       }
 
+      .select-input{
+        text-transform: capitalize;
+      }
+
       input,
       select,
       textarea {

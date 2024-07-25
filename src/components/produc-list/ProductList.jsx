@@ -36,6 +36,9 @@ export default function ProductList() {
         {products.map((prod) => (
           <ProductCard key={prod.id} product={prod} />
         ))}
+
+        {/* //Pegar lo de paginacion en admin product debajo de la tabla de productos minuto 32 hasta el minuto 1:05 class 5/07/2024 */}
+
       </div>
     </div>
   );

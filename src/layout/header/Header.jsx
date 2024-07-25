@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useOrder } from "../../context/OrderContext";
 import { Modal } from "../modal/Modal";
 import { useState } from "react";
+import { useUser } from "../../context/UserContex";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,9 +16,10 @@ export default function Header() {
 
   const handleShow = () => {
     setIsOpen(true);
-  };
+  }
 
-  const isAdmin = true;
+  const { user, logout } = useUser()
+  
   const { toggleSidebarOrder } = useOrder();
 
   return (
@@ -27,9 +29,13 @@ export default function Header() {
           <NavLink to="/" className="nav-link">
             Principal
           </NavLink>
-          <NavLink to="/login" className="nav-link" onClick={handleShow}>
+
+          {user ? <button className="nav-link" onClick={logout}>logout</button>
+          : <NavLink to="/login" className="nav-link">
             Login
-          </NavLink>
+            </NavLink>
+          }
+
           <NavLink to="/contact" className="nav-link">
             Contacto
           </NavLink>
@@ -39,7 +45,8 @@ export default function Header() {
           <NavLink to="/register" className="nav-link">
             Registro
           </NavLink>
-          {isAdmin && (
+
+          {user?.role === 'ADMIN_ROLE' && (
             <>
               <NavLink to="/admin-product" className="nav-link">
                 Admin Product
